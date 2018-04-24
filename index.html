@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    
+    <script src="js/loadResources.js"></script>
+    <script src="js/animationFrames.js"></script>
+    <script src="js/keyboard.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/bullets.js"></script>
+    <script src="js/collisions.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/levels.js"></script>
+    <script src="js/init.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>The Unforgiven - Tomasz Pazera</title>
+</head>
+<body onload="init()">
+    <div id="head"></div>
+    <div id="border-left"></div>
+    <div id="border-right"></div>
+    <div id="game">
+        <div id="bullets">
+            <div class="bulletsClass" id="bullet0"><p>∞</p></div>
+            <div class="bulletsClass" id="bullet1"><p>200</p></div>
+            <div class="bulletsClass" id="bullet2"><p>150</p></div>
+            <div class="bulletsClass" id="bullet3"><p>100</p></div>
+            <div class="bulletsClass" id="bullet4"><p>20</p></div>
+        </div>
+    </div>
+    <div id="startscreen">
+        <div id="money">
+            <div id="myMoney" class="moneyCount">10000</div>
+            <img src="gfx/interface/credits.png" />
+        </div>
+        <ul id="menu">
+            <li onclick="selectLevel();menuClick()" id="startGame">START A GAME</li>
+            <li onclick="selectSpaceship();menuClick()">SELECT A SPACESHIP</li>
+            <li onclick="upgradeAmmunition();menuClick()">UPGRADE WEAPONS</li>
+            <li onclick="information();menuClick()">INFORMATIONS</li>
+        </ul>
+        <div id="progress">
+            <div id="bar"></div>
+            <div id="progresstxt"></div>
+        </div>
+        <div id="selectLevel">
+            <p>Select a level</p>
+            <div id="level">
+                <div onclick="previous();menuClick()" id="previous"></div>
+                <div onclick="startGame();menuClick()" id="image">
+                    <div id="txtLevel">Back in black</div>
+                </div>
+                <div onclick="next();menuClick()" id="next"></div>
+            </div>
+            <div onclick="backToMenuLevel();menuClick()" id="backToMenu2">Back to menu</div>
+        </div>
+        <div id="selectSpaceship">
+            <p>Select a spaceship</p>
+            <div id="spaceship">
+                <div onclick="previousSpaceship();menuClick()" id="previousship"></div>
+                <div onclick="chooseSpaceship();menuClick()" id="imageship">
+                </div>
+                <div id="spaceshipInfo">
+                    Name: The Jack<br />HP: 5<br />Speed: 1
+                </div>
+                <div onclick="nextSpaceship();menuClick()" id="nextship"></div>
+            </div>
+        </div>
+        <div id="upgradeAmmunition">
+            <p>Upgrade your weapons</p>
+            <div id="ammunition">
+                <div class="ammunitionClass" id="ammunition0"><div class="upgradeButton" onclick="upgrade(0);menuClick()"><div class="buy"><div class="moneyCount">500</div><img src="gfx/interface/credits.png" /></div></div></div>
+                <div class="ammunitionClass" id="ammunition1"><div class="upgradeButton" onclick="upgrade(1);menuClick()"><div class="buy"><div class="moneyCount">1000</div><img src="gfx/interface/credits.png" /></div></div></div>
+                <div class="ammunitionClass" id="ammunition2"><div class="upgradeButton" onclick="upgrade(2);menuClick()"><div class="buy"><div class="moneyCount">1500</div><img src="gfx/interface/credits.png" /></div></div></div>
+                <div class="ammunitionClass" id="ammunition3"><div class="upgradeButton" onclick="upgrade(3);menuClick()"><div class="buy"><div class="moneyCount">3000</div><img src="gfx/interface/credits.png" /></div></div></div>
+                <div class="ammunitionClass" id="ammunition4"><div class="upgradeButton" onclick="upgrade(4);menuClick()"><div class="buy"><div class="moneyCount">6000</div><img src="gfx/interface/credits.png" /></div></div></div>
+            </div>
+            <div onclick="backToMenuShop();menuClick()" id="backToMenu">Back to menu</div>
+        </div>
+        <div id="gameOver">
+            <p style="margin-bottom: 10px; color: #a00000; font-size: 30px">Game Over</p>
+            <div id="endStatistics">
+                <span id="endPoints"></span><br />
+                <span id="endTime"></span><br />
+                <span id="killedEnemies"></span><br />
+                <span id="dodgedEnemies"></span><br />
+            </div>
+            <div onclick="backToMenuOver();menuClick()" id="backToMenu3">Back to menu</div>
+        </div>
+        <div id="information">
+            <p style="width: 50%; margin-left: 25%;">Gra wzorowana na <span style="color: #0DA9D9">RiverRaid</span> oraz <span style="color: #0DA9D9">Zybex</span> jako przykład gry z scrollowanym playfieldem. Muzyka wykorzystana w grze została nagrana przeze mnie. W projekcie używałem darmowych grafik oraz dźwięków.</p>
+            Tomasz Pazera, <span style="color: #0DA9D9">3ib</span><br />
+            <div onclick="backToMenuInf();menuClick()" id="backToMenu4">Back to menu</div>
+        </div>
+    </div>
+    <div>
+        <div id="hpBar"></div>
+        <div id="hp">5/5</div>
+        <div id="playerBar">
+            <div id="statistics">
+                <p id="time">Time: 00:00</p>
+                <p id="score">Points: 0</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="hiddenAudio">
+        <audio id="menuAudio" src="sfx/game.wav" loop></audio>
+        <audio id="clickAudio0" src="sfx/click.wav"></audio>
+        <audio id="clickAudio1" src="sfx/click.wav"></audio>
+        <audio id="clickAudio2" src="sfx/click.wav"></audio>
+        <audio id="clickAudio3" src="sfx/click.wav"></audio>
+        <audio id="laserAudio0" src="sfx/laser.wav"></audio>
+        <audio id="laserAudio1" src="sfx/laser.wav"></audio>
+        <audio id="laserAudio2" src="sfx/laser.wav"></audio>
+        <audio id="laserAudio3" src="sfx/laser.wav"></audio>
+        <audio id="explosionAudio0" src="sfx/explosion.wav"></audio>
+        <audio id="explosionAudio1" src="sfx/explosion.wav"></audio>
+        <audio id="explosionAudio2" src="sfx/explosion.wav"></audio>
+        <audio id="explosionAudio3" src="sfx/explosion.wav"></audio>
+        <audio id="gameOverAudio" src="sfx/gameover.wav"></audio>
+    </div>
+    
+
+    
+    <script>
+        canvas = document.createElement("canvas");
+        var ctx = canvas.getContext("2d");
+        canvas.width = window.innerHeight * 0.9;
+        canvas.height = window.innerHeight * 0.8;
+        canvasHeight = canvas.height;
+        canvasWidth = canvas.width;
+        canvas.id = "canvas";
+        document.getElementById("game").appendChild(canvas);
+        positionLeft = canvas.offsetLeft;
+        positionTop = canvas.offsetTop;
+    </script>
+</body>
+</html>

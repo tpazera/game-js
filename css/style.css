@@ -1,0 +1,512 @@
+﻿@font-face {
+    font-family: "Russo One";
+    src: url(../fonts/RussoOne.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Electric Toaster";
+    src: url(../fonts/Electric.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: Audiowide;
+    src: url(../fonts/Audiowide.ttf) format("truetype");
+}
+
+body {
+    margin: 0 auto;
+    overflow: hidden;
+    color: #fff;
+    font-family: "Russo One", Verdana;
+    background-color: black;
+}
+
+#game {
+    padding-top: 2.5%;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    background-color: black;
+}
+
+#head {
+    width: 94%;
+    height: 60px;
+    background-image: url('../gfx/interface/head.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 3%;
+    z-index: 3;
+}
+
+#border-left {
+    width: 3%;
+    height: 100%;
+    background-image: url('../gfx/interface/border-right.png');
+    background-repeat: no-repeat;
+    background-position: top left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+#border-right {
+    width: 3%;
+    height: 100%;
+    background-image: url('../gfx/interface/border-left.png');
+    background-repeat: no-repeat;
+    background-position: top right;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+}
+
+#startscreen {
+    margin: 0 auto;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    width: 50%;
+    min-height: 500px;
+    background-image: url('../gfx/interface/startscreen-head.png');
+    background-position: top;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    padding-top: 100px;
+}
+
+#startscreen ul {
+    display: none;
+    text-align: center;
+    list-style: none;
+    padding-top: 15px;
+    padding-left: 0;
+    line-height: 2;
+    font-size: 32px;
+    color: #c6c6c6;
+}
+
+#startscreen li:hover {
+    cursor: pointer;
+    color: #2DA1CF;
+    transition: all 0.8s;
+}
+
+
+#progress {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    list-style: none;
+    padding-top: 145px;
+    padding-left: 0;
+    line-height: 2;
+    font-size: 25px;
+    color: #c6c6c6;
+}
+
+#progress #bar {
+    background-image: url('../gfx/interface/progress.gif');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 200px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+#progresstxt {
+    margin-top: 25px;
+    color: #2DA1CF;
+}
+
+#selectLevel {
+    width: 100%;
+    text-align: center;
+    color: #c6c6c6;
+    line-height: 2;
+    display: none;
+    padding-top: 10px;
+    font-size: 25px;
+}
+
+#selectLevel p {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    font-size: 35px;
+}
+
+#level {
+    margin: 0 auto;
+    width: 100%;
+    height: 200px;
+    margin-left: 15%
+}
+
+#selectLevel #previous {
+    float: left;
+    width: 10%;
+    height: 100%;
+    background-image: url('../gfx/levels/no-previous.png');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+}
+
+#selectLevel #image {
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-image: url('../gfx/levels/level0.jpg');
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center;
+}
+
+#selectLevel #image:hover {
+    color: #2DA1CF;
+}
+
+#selectLevel #next {
+    float: left;
+    width: 10%;
+    height: 100%;
+    background-image: url('../gfx/levels/next.png');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+}
+
+#selectLevel #txtLevel {
+    padding-top: 130px;
+}
+
+#selectSpaceship {
+    width: 100%;
+    text-align: center;
+    color: #c6c6c6;
+    line-height: 2;
+    display: none;
+    padding-top: 10px;
+    font-size: 25px;
+}
+
+#selectSpaceship p {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    font-size: 35px;
+}
+
+#spaceship {
+    margin: 0 auto;
+    width: 100%;
+    height: 200px;
+    margin-left: 2.5%
+}
+
+#selectSpaceship #previousship {
+    float: left;
+    width: 10%;
+    height: 100%;
+    background-image: url('../gfx/levels/no-previous.png');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+}
+
+#selectSpaceship #imageship {
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-image: url('../gfx/spaceships/spaceship0.png');
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center;
+}
+
+#selectSpaceship #imageship:hover {
+    color: #2DA1CF;
+}
+
+#selectSpaceship #nextship {
+    float: left;
+    width: 10%;
+    height: 100%;
+    background-image: url('../gfx/levels/next.png');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+}
+
+#selectSpaceship #spaceshipInfo {
+    width: 25%;
+    height: 100%;
+    float: left;
+}
+
+#playerBar {
+    display: none;
+    position: absolute;
+    height: 120px;
+    width: 640px;
+    background-image: url('../gfx/interface/playerBar.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    bottom: 0;
+}
+
+#bullets {
+    position: absolute;
+    top: 130px;
+    height: 5%;
+    width: 25%;
+    left: 37.5%;
+    display: none;
+}
+
+.bulletsClass {
+    width: 13%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 80% 80%;
+    background-position: center;
+    float: left;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    text-align: center;
+    color: #38BF1D;
+    font-size: 1.2em;
+    text-shadow: 0 0 6px #000;
+}
+
+#bullet0 {
+    background-image: url('../gfx/weapons/ammo0.png');
+    border-bottom: 3px solid #0DA9D9;
+}
+
+#bullet1 {
+    background-image: url('../gfx/weapons/ammo1.png');
+}
+
+#bullet2 {
+    background-image: url('../gfx/weapons/ammo2.png');
+}
+
+#bullet3 {
+    background-image: url('../gfx/weapons/ammo3.png');
+}
+
+#bullet4 {
+    background-image: url('../gfx/weapons/ammo4.png');
+}
+
+#upgradeAmmunition {
+    width: 100%;
+    text-align: center;
+    color: #c6c6c6;
+    line-height: 2;
+    display: none;
+    padding-top: 50px;
+    font-size: 25px;
+}
+
+#ammunition {
+    height: 80%;
+    width: 100%;
+}
+
+#upgradeAmmunition p {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    font-size: 35px;
+}
+
+.ammunitionClass {
+    width: 15%;
+    height: 20%;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    float: left;
+
+}
+
+#ammunition0 {
+    background-image: url('../gfx/ammunition/upgrade0.png');
+}
+
+#ammunition1 {
+    background-image: url('../gfx/ammunition/upgrade1.png');
+}
+
+#ammunition2 {
+    background-image: url('../gfx/ammunition/upgrade2.png');
+}
+
+#ammunition3 {
+    background-image: url('../gfx/ammunition/upgrade3.png');
+}
+
+#ammunition4 {
+    background-image: url('../gfx/ammunition/upgrade4.png');
+}
+
+#money {
+    position: absolute;
+    top: 10%;
+    right: 3%;
+    font-size: 2em;
+}
+
+.moneyCount {
+    float: left;
+    margin-right: 10px;
+}
+
+#money img {
+    height: 40px;
+    width: auto;
+    float: left;
+}
+
+.ammunitionClass img {
+    width: 15%;
+    height: auto;
+    float: left;
+}
+
+.buy {
+    width: 100%;
+    margin-top: 200px;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.buy .moneyCount {
+    margin-left: 24%;
+}
+
+.upgradeButton {
+    cursor: pointer;
+}
+
+#backToMenu {
+    cursor: pointer;
+}
+
+#backToMenu:hover {
+    color: #0DA9D9;
+}
+
+#backToMenu2 {
+    cursor: pointer;
+}
+
+#backToMenu2:hover {
+    color: #0DA9D9;
+}
+
+#backToMenu3 {
+    cursor: pointer;
+}
+
+#backToMenu3:hover {
+    color: #0DA9D9;
+}
+
+#backToMenu4 {
+    cursor: pointer;
+}
+
+#backToMenu4:hover {
+    color: #0DA9D9;
+}
+
+#statistics {
+    text-align: left;
+    display: none;
+    padding-top: 2.5%;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+#information {
+    text-align: left;
+    display: none;
+    padding-top: 2.5%;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+
+#score {
+    position: absolute;
+    margin-left: 300px;
+    margin-top: 13px;
+}
+
+#time {
+    position: absolute;
+    margin-left: 180px;
+    margin-top: 13px;
+}
+
+#hp {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 370px;
+    margin-left: 135px;
+    height: 80px;
+    text-align: center;
+    line-height: 4;
+    font-size: 1.4em;
+}
+
+#hpBar {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 370px;
+    margin-left: 135px;
+    background-image: url("../gfx/interface/hp.png");
+    background-size: 100% 100%;
+    height: 80px;
+    text-align: center;
+    line-height: 4;
+    font-size: 1.4em;
+}
+
+#gameOver {
+    width: 100%;
+    text-align: center;
+    color: #c6c6c6;
+    line-height: 2;
+    display: none;
+    padding-top: 10px;
+    font-size: 25px;
+}
+
+.endStatistics {
+    color: #2DA1CF;
+}
